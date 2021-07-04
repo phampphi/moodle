@@ -1,0 +1,47 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+    volumes:
+    - ./data/mysql:/var/lib/mysql:rw
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+  moodle:
+    image: 'pppham/moodle:3.10.4'
+    container_name: moodle
+    environment:
+      DB_TYPE: mysqli
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: moodle
+      DB_USER: root
+      DB_PASS: dev
+      DB_PREFIX: mdl_
+      MOODLE_USERNAME: admin
+      MOODLE_PASSWORD: admin
+      MOODLE_EMAIL: admin@email.com
+      MOODLE_LANGUAGE: en
+      MOODLE_SITE_NAME: 'Elearning Platform'
+      MOODLE_SITE_SHORT_NAME: 'Elearning Platform'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./data/moodledata:/var/www/moodledata
+    depends_on:
+      - mysql
+  redis:
+    image: redis:6.0.9-alpine
+    container_name: redis
+    command:
+    - redis-server
+    - /etc/redis/redis.conf
+    volumes:
+    - ./redis.conf:/etc/redis/redis.conf:ro
+volumes:
+  moodledata:

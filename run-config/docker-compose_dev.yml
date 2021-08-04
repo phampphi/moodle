@@ -13,7 +13,7 @@ services:
     - ./data/mysql:/var/lib/mysql:rw
     - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
   moodle:
-    image: 'pppham/moodle:3.10.4'
+    image: 'pppham/moodle:3.11.2'
     container_name: moodle
     environment:
       DB_TYPE: mysqli
@@ -29,6 +29,13 @@ services:
       MOODLE_LANGUAGE: en
       MOODLE_SITE_NAME: 'Elearning Platform'
       MOODLE_SITE_SHORT_NAME: 'Elearning Platform'
+      # OLD_SITE_URL: http://127.0.0.1:8080
+      SITE_URL: http://localhost:8080
+      max_input_vars: 5000
+      client_max_body_size: 50M
+      post_max_size: 50M
+      upload_max_filesize: 50M
+      # DISABLED_PLUGINS: mod_googlemeet,mod_zoom
     ports:
       - '8080:8080'
     volumes:

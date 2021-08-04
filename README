@@ -1,0 +1,10 @@
+MOODLE_URL=https://github.com/moodle/moodle/archive/MOODLE_311_STABLE.tar.gz
+curl --location $MOODLE_URL | tar xz --strip-components=1 -C ./rootfs/var/www/html/
+
+tar -xvf ./plugins/edumy.tar.gz --strip-components=1 -C ./rootfs/var/www/html/
+unzip ./plugins/mod_attendance_moodle311_2021062901.zip -d ./rootfs/var/www/html/mod
+unzip ./plugins/block_configurable_reports_moodle310_2020110300.zip -d ./rootfs/var/www/html/blocks
+unzip ./plugins/mod_zoom_moodle311_2021072200.zip -d ./rootfs/var/www/html/mod
+unzip ./plugins/mod_googlemeet_moodle310_2021031800.zip -d ./rootfs/var/www/html/mod
+unzip ./plugins/local_staticpage_moodle310_2021010900 -d ./rootfs/var/www/html/local
+unzip ./plugins/local_contact_moodle311_2021052300 -d ./rootfs/var/www/html/local

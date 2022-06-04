@@ -35,7 +35,11 @@ services:
       client_max_body_size: 50M
       post_max_size: 50M
       upload_max_filesize: 50M
+      MOODLE_LANGUAGE: vi
       # DISABLED_PLUGINS: mod_googlemeet,mod_zoom
+      #MOODLE_REDIS_HOST: redis
+      #MOODLE_REDIS_PASSWORD: Y3pkV1ZXSm1RMDE0UjBaSFIxTmxjRWxFVmpsQWJGbEE=
+      #MOODLE_REDIS_PREFIX: moodle-local
     ports:
       - '8080:8080'
     volumes:
@@ -43,12 +47,12 @@ services:
     depends_on:
       - mysql
   redis:
-    image: redis:6.0.9-alpine
+    image: redis:7.0.0-alpine
     container_name: redis
     command:
     - redis-server
-    - /etc/redis/redis.conf
+    - /usr/local/etc/redis/redis.conf
     volumes:
-    - ./redis.conf:/etc/redis/redis.conf:ro
+    - ./redis.conf:/usr/local/etc/redis/redis.conf
 volumes:
   moodledata:

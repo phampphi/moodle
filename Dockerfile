@@ -9,7 +9,7 @@ RUN apk update && \
     chown nobody:nobody /usr/sbin/crond && chmod +x /etc/service/cron/run && \
     setcap cap_setgid=ep /usr/sbin/crond && \
 	# Install 'php-redis'
-	#apk --no-cache add php7-pecl-redis && \
+	apk --no-cache add php7-pecl-redis && \
 	chmod +x /var/www/html/admin/cli/*
 
 USER nobody

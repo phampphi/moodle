@@ -8,3 +8,6 @@ unzip ./plugins/mod_zoom_moodle311_2021072200.zip -d ./rootfs/var/www/html/mod
 unzip ./plugins/mod_googlemeet_moodle310_2021031800.zip -d ./rootfs/var/www/html/mod
 unzip ./plugins/local_staticpage_moodle310_2021010900 -d ./rootfs/var/www/html/local
 unzip ./plugins/local_contact_moodle311_2021052300 -d ./rootfs/var/www/html/local
+unzip ./plugins/vi.zip -d ./rootfs/var/www/html/lang
+unzip ./plugins/block_sharing_cart_moodle40_2022051500.zip -d ./rootfs/var/www/html/blocks
+unzip ./plugins/qtype_recordrtc_moodle40_2022011200.zip -d ./rootfs/var/www/html/question/type

@@ -43,16 +43,15 @@ if [ ! -f /var/www/html/config.php ]; then
     fi
 
     if [[ -n "${MOODLE_REDIS_HOST}" ]]; then
-        sed -i '/require_once/i $CFG->session_handler_class = "\core\session\redis"' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_host = "${MOODLE_REDIS_HOST}"' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_port = 6379' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_database = 0' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_auth = "${MOODLE_REDIS_PASSWORD}"' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_prefix = "${MOODLE_REDIS_PREFIX:-}"' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_acquire_lock_timeout = 120' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_acquire_lock_retry = 100' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_lock_expire = 7200' /var/www/html/config.php
-        sed -i '/require_once/i $CFG->session_redis_serializer_use_igbinary = false' /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_handler_class = '\\\core\\\session\\\redis';" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_host = '${MOODLE_REDIS_HOST}';" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_port = 6379;" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_database = 0;" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_auth = '${MOODLE_REDIS_PASSWORD}';" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_prefix = '${MOODLE_REDIS_PREFIX:-}';" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_acquire_lock_timeout = 120;" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_acquire_lock_retry = 100;" /var/www/html/config.php
+        sed -i "/require_once/i \\\$CFG->session_redis_lock_expire = 7200;" /var/www/html/config.php
     fi
 fi
 
